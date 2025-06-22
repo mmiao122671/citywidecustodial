@@ -47,13 +47,17 @@ const Home = () => {
     }
   ];
 
+  React.useEffect(() => {
+    document.title = 'City Wide Custodial – Affordable Cleaning Services for Home and Business';
+  }, []);
+
   return (
     <div>
       {/* Hero Section */}
       <section
         className="relative text-white"
         style={{
-          backgroundImage: "url('public/istockphoto-1433923860-612x612.jpg')",
+          backgroundImage: "url('public/homepage.jpg')",
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',

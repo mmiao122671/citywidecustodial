@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Phone, Mail, MapPin, Clock, MessageSquare, Send } from 'lucide-react';
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -21,10 +22,28 @@ const Contact = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log('Form submitted:', formData);
-    // You can add actual form submission logic here
-    alert('Thank you for your inquiry! We will get back to you within 24 hours.');
+
+    emailjs.send(
+      'service_d5a1m3e',
+      'template_ezd7asg',
+      formData,
+      '4ryvRZnm9w7QqWcdV'
+    )
+    .then((result) => {
+        console.log(result.text);
+        alert('Thank you for your inquiry! We will get back to you within 24 hours.');
+        setFormData({
+          fullName: '',
+          email: '',
+          phone: '',
+          contactMethod: 'email',
+          serviceType: '',
+          message: ''
+        });
+    }, (error) => {
+        console.log(error.text);
+        alert('Sorry, there was an error sending your message. Please try again later.');
+    });
   };
 
   return (
@@ -77,8 +96,8 @@ const Contact = () => {
                   <Mail className="h-6 w-6 text-orange-600 mt-1" />
                   <div>
                     <h3 className="font-semibold text-gray-900 mb-1">Email</h3>
-                    <a href="mailto:mmiaopeo@gmail.com" className="text-orange-600 hover:text-orange-700 text-lg">
-                      mmiaopeo@gmail.com
+                    <a href="mailto:mmiaopei@gmail.com" className="text-orange-600 hover:text-orange-700 text-lg">
+                      mmiaopei@gmail.com
                     </a>
                   </div>
                 </div>
