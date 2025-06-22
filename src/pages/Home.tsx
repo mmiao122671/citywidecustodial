@@ -6,23 +6,23 @@ const Home = () => {
   const services = [
     {
       icon: Building2,
-      title: 'Commercial Cleaning',
+      title: 'Office Cleaning',
       description: 'Professional office and facility cleaning services'
     },
     {
       icon: HomeIcon,
-      title: 'Residential Cleaning',
-      description: 'Deep cleaning for homes and apartments'
+      title: 'Strip & Wax Floors',
+      description: 'Professional floor stripping, waxing, and maintenance'
     },
     {
       icon: Hammer,
-      title: 'Post-Construction',
+      title: 'Construction Cleanup',
       description: 'Complete cleanup after renovations and new builds'
     },
     {
       icon: Sparkles,
-      title: 'Floor Care',
-      description: 'Professional floor stripping, waxing, and maintenance'
+      title: 'Carpet Cleaning',
+      description: 'Deep cleaning and restoration'
     }
   ];
 
@@ -159,7 +159,7 @@ const Home = () => {
             </div>
             <div>
               <img 
-                src="https://images.pexels.com/photos/4239091/pexels-photo-4239091.jpeg?auto=compress&cs=tinysrgb&w=600"
+                src="/public/homepage.jpg"
                 alt="Professional cleaning team Cornwall PEI"
                 className="rounded-lg shadow-lg"
               />
