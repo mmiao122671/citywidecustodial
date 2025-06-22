@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Phone, CheckCircle, Building2, Home as HomeIcon, Hammer, Sparkles, Star } from 'lucide-react';
+import { Phone, CheckCircle, Building2, Home as HomeIcon, Hammer, Sparkles, Star, Shield, Clock, Users, Award } from 'lucide-react';
 
 const Home = () => {
   const services = [
@@ -96,11 +96,33 @@ const Home = () => {
           <h2 className="text-3xl font-bold text-gray-900 mb-6">
             Island Owned & Operated for Over 20 Years
           </h2>
-          <p className="text-lg text-gray-600 leading-relaxed">
-            City Wide Custodial is your trusted partner for professional cleaning services across Prince Edward Island. 
-            We're fully bonded and insured, committed to delivering spotless results and dependable service 
-            for residential, commercial, industrial, and government clients.
-          </p>
+        </div>
+      </section>
+
+
+        {/* Main Content */}
+        <section className="py-16">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="prose prose-lg max-w-none">
+            <p className="text-lg text-gray-600 leading-relaxed mb-19">
+              City Wide Custodial is a trusted provider of janitorial, floor care, and custodial services 
+              for residential, commercial, industrial, and governmental clients in Cornwall and the 
+              surrounding communities of Prince Edward Island.
+            </p>
+            
+            <p className="text-lg text-gray-600 leading-relaxed mb-6">
+              Whether it's a one-time job or a long-term service contract, we offer a full line of 
+              cleaning, maintenance, and restoration services—all tailored to meet your needs and your 
+              budget. Our goal is to help you improve the appearance, hygiene, and functionality of 
+              your home or business.
+            </p>
+            
+            <p className="text-lg text-gray-600 leading-relaxed">
+              With flexible scheduling options including one-time, daily, weekly, monthly, or quarterly 
+              visits, we make it easy to keep your property looking its best. You decide the level of 
+              service that fits your needs—we'll handle the rest.
+            </p>
+          </div>
         </div>
       </section>
 
@@ -136,45 +158,50 @@ const Home = () => {
       </section>
 
       {/* Why Choose Us */}
-      <section className="py-16 bg-primary-50">
+      <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">Why Choose City Wide Custodial?</h2>
-              <div className="space-y-4">
-                {[
-                  'Over 20 years of experience serving PEI',
-                  'Fully bonded and insured',
-                  'High-quality products from trusted manufacturers',
-                  'Flexible scheduling options',
-                  'Competitive pricing with free estimates',
-                  'Island owned and operated'
-                ].map((item, index) => (
-                  <div key={index} className="flex items-start space-x-3">
-                    <CheckCircle className="h-6 w-6 text-primary-600 mt-0.5 flex-shrink-0" />
-                    <span className="text-lg text-gray-700">{item}</span>
-                  </div>
-                ))}
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Why Choose City Wide Custodial?</h2>
+            <p className="text-lg text-gray-600">
+              At City Wide Custodial, we're committed to delivering high-quality work with attention to detail and reliability.
+            
+            
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              {
+                icon: Shield,
+                title: 'Quality Supplies',
+                description: 'High-quality cleaning products and equipmen'
+              },
+              {
+                icon: Clock,
+                title: 'Flexible Scheduling',
+                description: 'One-time, daily, weekly, monthly, or quarterly visits'
+              },
+              {
+                icon: Users,
+                title: 'Experienced Team',
+                description: 'Professional staff committed to quality and reliability'
+              },
+              {
+                icon: Award,
+                title: 'Island Owned',
+                description: 'Local business serving PEI communities for over 20 years'
+              }
+            ].map((item, index) => (
+              <div key={index} className="text-center">
+                <div className="text-primary-600 mb-4 flex justify-center">
+                  <item.icon className="h-12 w-12" />
+                </div>
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">{item.title}</h3>
+                <p className="text-gray-600">{item.description}</p>
               </div>
-            </div>
-            <div>
-              <img 
-                src="/public/homepage.jpg"
-                alt="Professional cleaning team Cornwall PEI"
-                className="rounded-lg shadow-lg"
-              />
-            </div>
+            ))}
           </div>
         </div>
       </section>
-
-
-
-
-
-
-
-
 
       {/* Testimonials */}
       <section className="py-16">
