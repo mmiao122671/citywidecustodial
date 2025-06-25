@@ -43,7 +43,7 @@ const Contact = () => {
         )
         .then((result2) => {
           console.log("Auto-reply sent to customer:", result2.text);
-          alert('Thank you for your inquiry! We will get back to you within 24 hours.');
+          alert('Thank you for your inquiry! We will get back to you within 48 hours.');
           setFormData({
             fullName: '',
             email: '',
@@ -135,7 +135,7 @@ const Contact = () => {
                   <Clock className="h-6 w-6 text-orange-600 mt-1" />
                   <div>
                     <h3 className="font-semibold text-gray-900 mb-1">Response Time</h3>
-                    <p className="text-gray-600">We aim to respond within 1 business day</p>
+                    <p className="text-gray-600">We aim to respond within 2 business day</p>
                   </div>
                 </div>
               </div>

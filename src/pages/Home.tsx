@@ -67,23 +67,26 @@ const Home = () => {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-10">
-                LOCALLY    TRUSTED 
-                <span className="text-orange-200">Cleaning Services Since 1989</span>
+              <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-90">
+                LOCALLY      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;         
+                <span className="text-orange-200"> TRUSTED </span>
+                
+                <h4> <span className="text-3xl mb-8 text-orange-100">Cleaning Services Since 2001</span> </h4>       
+               
               </h1>
               <p className="text-xl mb-8 text-orange-100">
-                Commercial, Residential & Post-Construction Cleaning with a Personal Touch
+                
               </p>
-              <div className="flex flex-col sm:flex-row gap-4">
+              <div className="flex flex-col sm:flex-row gap-20">
                 <Link 
                   to="/contact"
-                  className="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-lg font-semibold text-lg transition-colors text-center"
+                  className="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-lg font-semibold text-base transition-colors text-center"
                 >
                   Request a Quote
                 </Link>
                 <a 
                   href="tel:9026294790"
-                  className="bg-white text-orange-600 hover:bg-gray-100 px-8 py-3 rounded-lg font-semibold text-lg transition-colors text-center flex items-center justify-center space-x-2"
+                  className="bg-white text-orange-600 hover:bg-gray-100 px-8 py-3 rounded-lg font-semibold text-base transition-colors text-center flex items-center justify-center space-x-2"
                 >
                   <Phone className="h-5 w-5" />
                   <span>Call (902) 629-4790</span>
@@ -108,7 +111,7 @@ const Home = () => {
         <section className="py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="prose prose-lg max-w-none">
-            <p className="text-lg text-gray-600 leading-relaxed mb-19">
+            <p className="text-xl text-gray-600 leading-relaxed mb-19">
               City Wide Custodial is a trusted provider of janitorial, floor care, and custodial services 
               for residential, commercial, industrial, and governmental clients in Cornwall and the 
               surrounding communities of Prince Edward Island.
