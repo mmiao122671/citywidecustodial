@@ -77,7 +77,7 @@ const Home = () => {
               <p className="text-xl mb-8 text-orange-100">
                 
               </p>
-              <div className="flex flex-col sm:flex-row gap-20">
+              <div className="flex flex-col sm:flex-row gap-10">
                 <Link 
                   to="/contact"
                   className="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-lg font-semibold text-base transition-colors text-center"
