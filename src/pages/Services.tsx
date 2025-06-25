@@ -76,9 +76,16 @@ const Services = () => {
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
             Professional Floor Care & Janitorial Services Across PEI
           </h1>
-          <p className="text-xl text-orange-100">
+          <p className="text-xl text-orange-600 leading-relaxed mb-19">
             Island owned and operated, serving Cornwall and surrounding communities for over 20 years
           </p>
+
+
+          <p className="text-lg text-gray-600 leading-relaxed mb-19">
+              City Wide Custodial is a trusted provider of janitorial, floor care, and custodial services 
+              for residential, commercial, industrial, and governmental clients in Cornwall and the 
+              surrounding communities of Prince Edward Island.
+            </p>
         </div>
       </section>
 

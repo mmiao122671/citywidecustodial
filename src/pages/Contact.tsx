@@ -22,26 +22,43 @@ const Contact = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    console.log("Submitting form with data:", formData);
 
+    // 1. 发送给你自己的邮箱（Contact Us 模板）
     emailjs.send(
-      'service_d5a1m3e',
-      'template_ezd7asg',
+      'service_d5a1m3e', // 你的 service_id
+      'template_fwzfm3n', // 通知你自己的模板ID
       formData,
-      '4ryvRZnm9w7QqWcdV'
+      '4ryvRZnm9w7QqWcdV' // 你的 public key
     )
     .then((result) => {
-        console.log(result.text);
-        alert('Thank you for your inquiry! We will get back to you within 24 hours.');
-        setFormData({
-          fullName: '',
-          email: '',
-          phone: '',
-          contactMethod: 'email',
-          serviceType: '',
-          message: ''
+        console.log("Email sent to you:", result.text);
+
+        // 2. 自动回复客户（Auto-Reply 模板）
+        emailjs.send(
+          'service_d5a1m3e',
+          'template_abnqcas', // 自动回复模板ID
+          formData,
+          '4ryvRZnm9w7QqWcdV'
+        )
+        .then((result2) => {
+          console.log("Auto-reply sent to customer:", result2.text);
+          alert('Thank you for your inquiry! We will get back to you within 24 hours.');
+          setFormData({
+            fullName: '',
+            email: '',
+            phone: '',
+            contactMethod: 'email',
+            serviceType: '',
+            message: ''
+          });
+        }, (error2) => {
+          console.log("Auto-reply error:", error2.text);
+          alert('Your inquiry was received, but we could not send a confirmation email to you.');
         });
+
     }, (error) => {
-        console.log(error.text);
+        console.log("EmailJS error:", error.text);
         alert('Sorry, there was an error sending your message. Please try again later.');
     });
   };
