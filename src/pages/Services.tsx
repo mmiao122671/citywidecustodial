@@ -91,10 +91,10 @@ const Services = () => {
 
       {/* Introduction */}
       <section className="py-16 bg-gray-50">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
            
-            <p className="text-xl text-gray-600 leading-relaxed mb-19">
+            <p className="text-2xl text-gray-600 leading-relaxed mb-19">
     Island owned and operated, City Wide Custodial has proudly served Cornwall and surrounding
     communities for over 20 years. We offer a wide range of high-quality cleaning, janitorial,
     and maintenance services for residential, commercial, industrial, and government clients.

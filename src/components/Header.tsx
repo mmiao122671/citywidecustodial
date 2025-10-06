@@ -17,7 +17,7 @@ const Header = () => {
   return (
     <header className="bg-white shadow-sm sticky top-0 z-50">
       {/* Top bar with contact info */}
-      <div className="bg-primary-900 text-white py-2 px-4">
+      <div className="bg-primary-900 text-white py-3 px-4">
         <div className="max-w-7xl mx-auto flex justify-between items-center text-sm">
           <div className="flex items-center space-x-4">
             <span>Serving Cornwall, Charlottetown & Surrounding PEI Areas</span>
@@ -32,7 +32,7 @@ const Header = () => {
       </div>
 
       {/* Main navigation */}
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <nav className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-10">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center">

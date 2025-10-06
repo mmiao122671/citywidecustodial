@@ -100,7 +100,7 @@ const Home = () => {
       {/* Introduction */}
       <section className="py-16 bg-gray-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">
+          <h2 className="text-4xl font-bold text-gray-900 mb-6">
             Island Owned & Operated for Over 20 Years
           </h2>
         </div>
@@ -109,22 +109,20 @@ const Home = () => {
 
         {/* Main Content */}
         <section className="py-16">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="prose prose-lg max-w-none">
-            <p className="text-xl text-gray-600 leading-relaxed mb-19">
+            <p className="text-2xl text-gray-600 leading-relaxed mb-19">
               City Wide Custodial is a trusted provider of janitorial, floor care, and custodial services 
               for residential, commercial, industrial, and governmental clients in Cornwall and the 
               surrounding communities of Prince Edward Island.
-            </p>
-            
-            <p className="text-lg text-gray-600 leading-relaxed mb-6">
+           
               Whether it's a one-time job or a long-term service contract, we offer a full line of 
               cleaning, maintenance, and restoration services—all tailored to meet your needs and your 
               budget. Our goal is to help you improve the appearance, hygiene, and functionality of 
               your home or business.
             </p>
             
-            <p className="text-lg text-gray-600 leading-relaxed">
+            <p className="text-2xl text-gray-600 leading-relaxed">
               With flexible scheduling options including one-time, daily, weekly, monthly, or quarterly 
               visits, we make it easy to keep your property looking its best. You decide the level of 
               service that fits your needs—we'll handle the rest.

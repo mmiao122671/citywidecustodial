@@ -79,9 +79,9 @@ const Contact = () => {
 
       {/* Contact Information */}
       <section className="py-16 bg-gray-50">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <p className="text-lg text-gray-600 leading-relaxed">
+            <p className="text-2xl text-gray-600 leading-relaxed">
               Have questions or ready to request a free estimate? We'd love to hear from you! 
               Whether you're looking for a one-time deep clean, regular office service, 
               or post-construction cleanup, the team at City Wide Custodial is here to help. 
