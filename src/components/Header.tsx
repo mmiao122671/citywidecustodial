@@ -9,7 +9,6 @@ const Header = () => {
   const navigation = [
     { name: 'Home', href: '/' },
     { name: 'Services', href: '/services' },
-    { name: 'Testimonials', href: '/testimonials' },
     { name: 'Contact', href: '/contact' },
   ];
 
@@ -18,7 +17,7 @@ const Header = () => {
   return (
     <header className="bg-white shadow-sm sticky top-0 z-50">
       {/* Top bar with contact info */}
-      <div className="bg-primary-600 text-white py-2 px-4">
+      <div className="bg-primary-900 text-white py-2 px-4">
         <div className="max-w-7xl mx-auto flex justify-between items-center text-sm">
           <div className="flex items-center space-x-4">
             <span>Serving Cornwall, Charlottetown & Surrounding PEI Areas</span>

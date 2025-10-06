@@ -44,11 +44,7 @@ const Footer = () => {
                   Services
                 </Link>
               </li>
-              <li>
-                <Link to="/testimonials" className="text-gray-300 hover:text-primary-400 transition-colors">
-                  Testimonials
-                </Link>
-              </li>
+              
               <li>
                 <Link to="/contact" className="text-gray-300 hover:text-primary-400 transition-colors">
                   Contact
