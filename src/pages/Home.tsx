@@ -55,7 +55,7 @@ const Home = () => {
     <div>
       {/* Hero Section */}
       <section
-        className="relative text-white"
+        className="relative text-white h-[80vh]"
         style={{
           backgroundImage: "url('homepage.jpg')",
           backgroundSize: 'cover',
