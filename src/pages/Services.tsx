@@ -20,11 +20,11 @@ const Services = () => {
       title: 'Carpet Cleaning',
       description: 'Deep cleaning for carpets using industry-leading equipment and eco-friendly solutions to lift dirt, remove stains, and restore freshness.'
     },
-    {
-      icon: Hammer,
-      title: 'Post-Construction Cleanup',
-      description: 'We clean up after renovations, new builds, and repairs. From dust and debris to fine detailing, we\'ll prepare your space for occupancy.'
-    },
+    // {
+    //   icon: Hammer,
+    //   title: 'Post-Construction Cleanup',
+    //   description: 'We clean up after renovations, new builds, and repairs. From dust and debris to fine detailing, we\'ll prepare your space for occupancy.'
+    // },
     {
       icon: HomeIcon,
       title: 'Office Cleaning',
@@ -56,8 +56,9 @@ const Services = () => {
     'Cornwall',
     'Charlottetown', 
     'Summerside',
-    'Georgetown',
-    'Cardigan',
+    'Montague',
+    'Stratford',
+
     'Surrounding areas across Prince Edward Island'
   ];
 
