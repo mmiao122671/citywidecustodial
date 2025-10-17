@@ -57,7 +57,7 @@ const Home = () => {
       <section
         className="relative text-white h-[80vh]"
         style={{
-          backgroundImage: "url('homepage.jpg')",
+          backgroundImage: "url('homepage2.jpg')",
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
