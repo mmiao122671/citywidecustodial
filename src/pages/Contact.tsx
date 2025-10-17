@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { Phone, Mail, MapPin, Clock, MessageSquare, Send } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 
@@ -62,6 +63,17 @@ const Contact = () => {
         alert('Sorry, there was an error sending your message. Please try again later.');
     });
   };
+
+  const location = useLocation();
+  useEffect(() => {
+    if (location.hash) {
+      const elementId = location.hash.replace('#', '');
+      const target = document.getElementById(elementId);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+  }, [location]);
 
   return (
     <div>
@@ -207,7 +219,7 @@ const Contact = () => {
             </div>
 
             {/* Contact Form */}
-            <div>
+            <div id="send-request">
               <h2 className="text-3xl font-bold text-gray-900 mb-8">Request a Quote</h2>
               
               <form onSubmit={handleSubmit} className="space-y-6">
