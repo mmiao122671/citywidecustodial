@@ -152,7 +152,7 @@ const Contact = () => {
               </div>
 
               {/* Google Maps */}
-              <div>
+              {/* <div>
                 <h3 className="font-semibold text-gray-900 mb-4">Find Us</h3>
                 <div className="bg-gray-200 rounded-lg overflow-hidden">
                   <iframe
@@ -166,7 +166,44 @@ const Contact = () => {
                     title="City Wide Custodial Location - Cornwall, PE"
                   ></iframe>
                 </div>
-              </div>
+              </div> */}
+
+              <div>
+  <h3 className="font-semibold text-gray-900 mb-4">Find Us</h3>
+  <div className="bg-gray-200 rounded-lg overflow-hidden">
+    <iframe
+      title="City Wide Custodial Location - Cornwall, PE"
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2894.871086401144!2d-63.21936612346046!3d46.283972673937066!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4b5e52ddd0e06d45%3A0x4066867ee0f3f6a6!2sCornwall%2C%20PE%20C0A%201H0!5e0!3m2!1sen!2sca!4v1734481000000!5m2!1sen!2sca"
+      width="100%"
+      height="250"
+      style={{ border: 0 }}
+      allowFullScreen={false}
+      loading="lazy"
+      referrerPolicy="no-referrer-when-downgrade"
+      className="w-full"
+    ></iframe>
+  </div>
+</div>
+
+<div className="text-center mt-4">
+    <a
+      href="https://www.google.com/maps/dir/?api=1&destination=Cornwall,+Prince+Edward+Island+C0A+1H0"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="inline-block bg-black text-white px-5 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+    >
+      Get Directions
+    </a>
+  </div>
+
+
+
+
+
+
+
+
+
             </div>
 
             {/* Contact Form */}
