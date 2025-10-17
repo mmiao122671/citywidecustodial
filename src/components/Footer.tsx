@@ -71,7 +71,7 @@ const Footer = () => {
               <li className="flex items-start space-x-3">
                 <MapPin className="h-5 w-5 text-primary-400 mt-0.5" />
                 <span className="text-gray-300">
-                  Cornwall, PEI
+                  Cornwall, PEI, Canada
                 </span>
               </li>
             </ul>
