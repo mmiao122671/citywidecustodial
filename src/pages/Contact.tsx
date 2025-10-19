@@ -341,7 +341,12 @@ const Contact = () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h3 className="text-xl font-semibold text-gray-900 mb-4">Connect With Us</h3>
           <div className="flex justify-center space-x-4">
-            <a href="#" className="text-gray-600 hover:text-orange-600 transition-colors">
+            <a 
+              href="https://www.facebook.com/CityWideCustodial" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-gray-600 hover:text-orange-600 transition-colors"
+            >
               <MessageSquare className="h-6 w-6" />
             </a>
           </div>

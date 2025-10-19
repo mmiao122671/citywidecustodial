@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Phone, Mail, MapPin, Facebook, Instagram } from 'lucide-react';
+import { Phone, Mail, MapPin, Facebook } from 'lucide-react';
 
 const Footer = () => {
   return (
@@ -20,12 +20,15 @@ const Footer = () => {
               communities across Prince Edward Island for over 20 years. Fully bonded and insured.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-gray-400 hover:text-primary-400 transition-colors">
+              <a 
+                href="https://www.facebook.com/CityWideCustodial" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-primary-400 transition-colors"
+              >
                 <Facebook className="h-5 w-5" />
               </a>
-              <a href="#" className="text-gray-400 hover:text-primary-400 transition-colors">
-                <Instagram className="h-5 w-5" />
-              </a>
+             
             </div>
           </div>
 
