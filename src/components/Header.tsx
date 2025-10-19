@@ -59,7 +59,7 @@ const Header = () => {
               </Link>
             ))}
             <Link
-              to="/contact"
+              to="/contact#send-request"
               className="bg-primary-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-primary-700 transition-colors"
             >
               Request Quote
@@ -95,7 +95,7 @@ const Header = () => {
                 </Link>
               ))}
               <Link
-                to="/contact"
+                to="/contact#send-request"
                 className="block mx-3 mt-4 bg-primary-600 text-white px-4 py-2 rounded-md text-base font-medium text-center hover:bg-primary-700 transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >

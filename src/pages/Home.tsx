@@ -79,7 +79,7 @@ const Home = () => {
               </p>
               <div className="flex flex-col sm:flex-row gap-10">
                 <Link 
-                  to="/contact"
+                  to="/contact#send-request"
                   className="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-lg font-semibold text-base transition-colors text-center"
                 >
                   Request a Quote
@@ -254,7 +254,7 @@ const Home = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link 
-              to="/contact"
+              to="/contact#send-request"
               className="bg-white text-primary-600 hover:bg-gray-100 px-8 py-3 rounded-lg font-semibold text-lg transition-colors"
             >
               Get Free Estimate
