@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Building2, Home as HomeIcon, Hammer, Sparkles, Drum as Vacuum, PaintBucket, Recycle, Shield, CheckCircle } from 'lucide-react';
+import { Building2, Home as HomeIcon, Droplets, SprayCan,MonitorCheck,Hammer, Sparkles, Drum as Vacuum, PaintBucket, Recycle, Shield, CheckCircle } from 'lucide-react';
 
 const Services = () => {
   const services = [
@@ -20,11 +20,12 @@ const Services = () => {
       title: 'Carpet Cleaning',
       description: 'Deep cleaning for carpets using industry-leading equipment and eco-friendly solutions to lift dirt, remove stains, and restore freshness.'
     },
-    // {
-    //   icon: Hammer,
-    //   title: 'Post-Construction Cleanup',
-    //   description: 'We clean up after renovations, new builds, and repairs. From dust and debris to fine detailing, we\'ll prepare your space for occupancy.'
-    // },
+    {
+      icon: Droplets,
+      title: 'Pressure Cleaning & Seasonal Cleanup',
+      description: 'Commercial, industrial, and residential pressure washing for buildings, driveways, and outdoor spaces to keep your property safe and spotless year-round.'
+
+    },
     {
       icon: HomeIcon,
       title: 'Office Cleaning',
@@ -35,13 +36,13 @@ const Services = () => {
       title: 'Building Maintenance & Repairs',
       description: 'Minor repairs and general upkeep to ensure your property stays in top condition. We\'re a one-stop shop for cleaning and light maintenance.'
     },
+    // {
+    //   icon: PaintBucket,
+    //   title: 'Painting & Drywall Repair',
+    //   description: 'Touch-ups or full-room painting jobs, plus drywall patching and finishing. Ideal for property turnover or commercial renovations.'
+    // },
     {
       icon: PaintBucket,
-      title: 'Painting & Drywall Repair',
-      description: 'Touch-ups or full-room painting jobs, plus drywall patching and finishing. Ideal for property turnover or commercial renovations.'
-    },
-    {
-      icon: Shield,
       title: 'Restoration & Property Cleanup',
       description: 'Specialized cleaning and restoration after fire, flood, or damage. Includes disposal, disinfection, and deep cleaning.'
     },
@@ -53,12 +54,9 @@ const Services = () => {
   ];
 
   const serviceAreas = [
-    'Cornwall',
-    'Charlottetown', 
+    'Charlottetown',
     'Summerside',
     'Montague',
-    'Stratford',
-
     'Surrounding areas across Prince Edward Island'
   ];
 
@@ -66,7 +64,7 @@ const Services = () => {
     'Avmor®',
     'Dustbane',
     'Johnson Diversey™',
-    'Swish'
+    'Wood Wyant'
   ];
 
   return (

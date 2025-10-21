@@ -67,13 +67,24 @@ const Home = () => {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-90">
+              {/* <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-90">
                 LOCALLY      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        
                 <span className="text-orange-200"> TRUSTED </span>
                 
-                <h4> <span className="text-3xl mb-8 text-orange-100">Cleaning Services Since 2001</span> </h4>       
+                <h4> <span className="text-3xl mb-8 text-orange-100">Cleaning Services Since 1990</span> </h4>       
                
-              </h1>
+              </h1> */}
+
+              <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-10">
+  LOCALLY
+  <span className="ml-6 text-orange-200">TRUSTED</span>
+  <h4>
+    <span className="text-3xl mb-8 text-orange-100 block">
+      Cleaning Services Since 1990
+    </span>
+  </h4>
+</h1>
+
               <p className="text-xl mb-8 text-orange-100">
                 
               </p>
@@ -101,7 +112,7 @@ const Home = () => {
       <section className="py-16 bg-gray-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-4xl font-bold text-gray-900 mb-6">
-            Island Owned & Operated for Over 20 Years
+            Island Owned & Operated for Over 35 Years
           </h2>
         </div>
       </section>
