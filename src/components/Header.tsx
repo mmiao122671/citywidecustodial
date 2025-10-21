@@ -20,7 +20,7 @@ const Header = () => {
       <div className="bg-primary-900 text-white py-3 px-4">
         <div className="max-w-7xl mx-auto flex justify-between items-center text-sm">
           <div className="flex items-center space-x-4">
-            <span>Serving Cornwall, Charlottetown & Surrounding PEI Areas</span>
+            <span>Serving Charlottetown, Summerside, Montague& Surrounding across PEI Areas</span>
           </div>
           <div className="flex items-center space-x-4">
             <a href="tel:9026294790" className="flex items-center space-x-1 hover:text-primary-200 transition-colors">
