@@ -68,7 +68,7 @@ const Footer = () => {
               <li className="flex items-start space-x-3">
                 <Mail className="h-5 w-5 text-primary-400 mt-0.5" />
                 <Link to="/contact#send-request" className="text-gray-300 hover:text-primary-400 transition-colors">
-                  citywidecustodial@gmail.com
+                info@citywidecustodial.com
                 </Link>
               </li>
               <li className="flex items-start space-x-3">

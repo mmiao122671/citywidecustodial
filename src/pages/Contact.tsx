@@ -27,14 +27,19 @@ const Contact = () => {
 
     try {
       const payload = {
-        ...formData,
+        name: formData.fullName,
+        email: formData.email,
+        phone: formData.phone,
+        contactMethod: formData.contactMethod,
+        serviceType: formData.serviceType,
+        message: formData.message,
         _subject: `New Contact Request from ${formData.fullName || 'Website Visitor'}`,
         _template: 'table',
         _captcha: 'false',
         _replyto: formData.email
       };
 
-      const response = await fetch('https://formsubmit.co/mmiao@gmail.com', {
+      const response = await fetch('https://formsubmit.co/ajax/mmiaopei@gmail.com', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -139,7 +144,7 @@ const Contact = () => {
                   <div>
                     <h3 className="font-semibold text-gray-900 mb-1">Email</h3>
                     <a href="mailto:citywidecustodial@gmail.com" className="text-orange-600 hover:text-orange-700 text-lg">
-                      citywidecustodial@gmail.com
+                    info@citywidecustodial.com
                     </a>
                   </div>
                 </div>
