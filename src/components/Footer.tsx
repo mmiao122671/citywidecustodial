@@ -16,7 +16,7 @@ const Footer = () => {
               />
             </div>
             <p className="text-gray-300 mb-4 max-w-md">
-              Isowned and operated, proudly serving Cornwall, Charlottetown, and surrounding 
+              Island owned and operated, proudly serving Cornwall, Charlottetown, and surrounding 
               communities across Prince Edward Island for over 20 years. Fully bonded and insured.
             </p>
             <div className="flex space-x-4">
