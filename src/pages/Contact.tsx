@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Phone, Mail, MapPin, Clock, MessageSquare, Send } from 'lucide-react';
-import emailjs from '@emailjs/browser';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -12,6 +11,7 @@ const Contact = () => {
     serviceType: '',
     message: ''
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -21,47 +21,60 @@ const Contact = () => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Submitting form with data:", formData);
+    setIsSubmitting(true);
 
-    // 1. 发送给你自己的邮箱（Contact Us 模板）
-    emailjs.send(
-      'service_d5a1m3e', // 你的 service_id
-      'template_fwzfm3n', // 通知你自己的模板ID
-      formData,
-      '4ryvRZnm9w7QqWcdV' // 你的 public key
-    )
-    .then((result) => {
-        console.log("Email sent to you:", result.text);
+    try {
+      const payload = {
+        ...formData,
+        _subject: `New Contact Request from ${formData.fullName || 'Website Visitor'}`,
+        _template: 'table',
+        _captcha: 'false',
+        _replyto: formData.email
+      };
 
-        // 2. 自动回复客户（Auto-Reply 模板）
-        emailjs.send(
-          'service_d5a1m3e',
-          'template_abnqcas', // 自动回复模板ID
-          formData,
-          '4ryvRZnm9w7QqWcdV'
-        )
-        .then((result2) => {
-          console.log("Auto-reply sent to customer:", result2.text);
-          alert('Thank you for your inquiry! We will get back to you within 48 hours.');
-          setFormData({
-            fullName: '',
-            email: '',
-            phone: '',
-            contactMethod: 'email',
-            serviceType: '',
-            message: ''
-          });
-        }, (error2) => {
-          console.log("Auto-reply error:", error2.text);
-          alert('Your inquiry was received, but we could not send a confirmation email to you.');
-        });
+      const response = await fetch('https://formsubmit.co/mmiao@gmail.com', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json'
+        },
+        body: JSON.stringify(payload)
+      });
 
-    }, (error) => {
-        console.log("EmailJS error:", error.text);
-        alert('Sorry, there was an error sending your message. Please try again later.');
-    });
+      const rawResult = await response.text();
+      let result: { success?: boolean | string; message?: string } = {};
+      try {
+        result = rawResult ? JSON.parse(rawResult) : {};
+      } catch {
+        result = { message: rawResult };
+      }
+
+      const hasExplicitFailure = result.success === false || result.success === 'false';
+
+      // FormSubmit can return HTML even when delivery succeeds.
+      // If HTTP status is OK and there is no explicit failure flag, treat as success.
+      if (!response.ok || hasExplicitFailure) {
+        throw new Error(result.message || 'Failed to send message');
+      }
+
+      alert('Thank you for your inquiry! We will get back to you within 48 hours.');
+      setFormData({
+        fullName: '',
+        email: '',
+        phone: '',
+        contactMethod: 'email',
+        serviceType: '',
+        message: ''
+      });
+    } catch (error) {
+      console.error('FormSubmit error:', error);
+      const message = error instanceof Error ? error.message : 'Unknown error';
+      alert(`Sorry, there was an error sending your message. ${message}`);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const location = useLocation();
@@ -321,10 +334,11 @@ const Contact = () => {
 
                 <button
                   type="submit"
+                  disabled={isSubmitting}
                   className="w-full bg-green-600 text-white px-6 py-3 rounded-lg font-semibold text-lg hover:bg-green-700 transition-colors flex items-center justify-center space-x-2"
                 >
                   <Send className="h-5 w-5" />
-                  <span>Send Request</span>
+                  <span>{isSubmitting ? 'Sending...' : 'Send Request'}</span>
                 </button>
               </form>
 
