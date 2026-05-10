@@ -16,20 +16,9 @@ const Footer = () => {
               />
             </div>
             <p className="text-gray-300 mb-4 max-w-md">
-              Island owned and operated, proudly serving Cornwall, Charlottetown, and surrounding 
-              communities across Prince Edward Island for over 20 years. Fully bonded and insured.
+              Islander owned and operated, proudly serving Charlottetown, Montague, and surrounding 
+              communities across Prince Edward Island for over 35 years. Fully bonded and insured.
             </p>
-            <div className="flex space-x-4">
-              <a 
-                href="https://www.facebook.com/CityWideCustodial" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-primary-400 transition-colors"
-              >
-                <Facebook className="h-5 w-5" />
-              </a>
-             
-            </div>
           </div>
 
           {/* Quick Links */}
@@ -72,6 +61,18 @@ const Footer = () => {
                 </Link>
               </li>
               <li className="flex items-start space-x-3">
+                <Facebook className="h-5 w-5 shrink-0 text-[#1877F2] mt-0.5" aria-hidden />
+                <a
+                  href="https://www.facebook.com/CityWideCustodial"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="City Wide Custodial on Facebook (opens in new tab)"
+                  className="text-gray-300 hover:text-primary-400 transition-colors"
+                >
+                  Facebook
+                </a>
+              </li>
+              <li className="flex items-start space-x-3">
                 <MapPin className="h-5 w-5 text-primary-400 mt-0.5" />
                 <span className="text-gray-300">
                   Cornwall, PEI, Canada
@@ -82,7 +83,7 @@ const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400 text-sm">
+        <div className="border-t border-gray-800 mt-8 pt-8 text-center sm:text-left text-gray-400 text-sm">
           <p>&copy; {new Date().getFullYear()} City Wide Custodial. All rights reserved.</p>
         </div>
       </div>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Phone, Mail, MapPin, Clock, MessageSquare, Send } from 'lucide-react';
+import Seo from '../components/Seo';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -39,7 +40,7 @@ const Contact = () => {
         _replyto: formData.email
       };
 
-      const response = await fetch('https://formsubmit.co/ajax/bgass@eastlink.com', {
+      const response = await fetch('https://formsubmit.co/ajax/mmiaopei@gmail.com', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -95,6 +96,11 @@ const Contact = () => {
 
   return (
     <div>
+      <Seo
+        path="/contact"
+        title="Contact Us | City Wide Custodial — Cornwall & Charlottetown PEI"
+        description="Request a free estimate for cleaning services on PEI. Phone (902) 629-4790, email info@citywidecustodial.com. Serving Charlottetown, Cornwall, Montague & surrounding areas."
+      />
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-green-600 to-green-800 text-white py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -181,57 +187,26 @@ const Contact = () => {
                 </a>
               </div>
 
-              {/* Google Maps */}
-              {/* <div>
-                <h3 className="font-semibold text-gray-900 mb-4">Find Us</h3>
-                <div className="bg-gray-200 rounded-lg overflow-hidden">
-                  <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2894.8857859580935!2d-63.21682968398819!3d46.28366507912015!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4b5e52ddd0e06d45%3A0x4066867ee0f3f6a6!2sCornwall%2C%20PE!5e0!3m2!1sen!2sca!4v1635789123456!5m2!1sen!2sca"
-                    width="100%"
-                    height="250"
-                    style={{ border: 0 }}
-                    allowFullScreen
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                    title="City Wide Custodial Location - Cornwall, PE"
-                  ></iframe>
-                </div>
-              </div> */}
-
-              <div>
-  <h3 className="font-semibold text-gray-900 mb-4">Find Us</h3>
-  <div className="bg-gray-200 rounded-lg overflow-hidden">
-    <iframe
-      title="City Wide Custodial Location - Cornwall, PE"
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2894.871086401144!2d-63.21936612346046!3d46.283972673937066!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4b5e52ddd0e06d45%3A0x4066867ee0f3f6a6!2sCornwall%2C%20PE%20C0A%201H0!5e0!3m2!1sen!2sca!4v1734481000000!5m2!1sen!2sca"
-      width="100%"
-      height="250"
-      style={{ border: 0 }}
-      allowFullScreen={false}
-      loading="lazy"
-      referrerPolicy="no-referrer-when-downgrade"
-      className="w-full"
-    ></iframe>
-  </div>
-</div>
-
-<div className="text-center mt-4">
-    <a
-      href="https://www.google.com/maps/dir/?api=1&destination=Cornwall,+Prince+Edward+Island+C0A+1H0"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="inline-block bg-black text-white px-5 py-2 rounded-lg hover:bg-blue-700 transition-colors"
-    >
-      Get Directions
-    </a>
-  </div>
-
-
-
-
-
-
-
+              <div className="rounded-xl border border-gray-200 bg-gradient-to-br from-green-50 via-white to-orange-50/40 p-6 shadow-sm">
+                <h3 className="font-semibold text-gray-900 mb-3 flex items-center gap-2 text-lg">
+                  <MapPin className="h-5 w-5 text-orange-600 shrink-0" aria-hidden />
+                  Serving Prince Edward Island
+                </h3>
+                <p className="text-gray-600 text-sm leading-relaxed mb-4">
+                  Islander owned and operated—we provide professional cleaning throughout Charlottetown, Montague,
+                  Cornwall, and surrounding communities across PEI.
+                </p>
+                <p className="text-gray-600 text-sm leading-relaxed mb-5">
+                  Need directions or want to talk through your location? Call us and we will gladly help.
+                </p>
+                <a
+                  href="tel:9026294790"
+                  className="inline-flex items-center justify-center gap-2 w-full sm:w-auto rounded-lg bg-green-600 text-white px-5 py-2.5 text-sm font-semibold hover:bg-green-700 transition-colors"
+                >
+                  <Phone className="h-4 w-4 shrink-0" aria-hidden />
+                  (902) 629-4790
+                </a>
+              </div>
 
 
             </div>
@@ -286,7 +261,7 @@ const Contact = () => {
                   />
                 </div>
 
-                <div>
+                {/* <div>
                   <label htmlFor="contactMethod" className="block text-sm font-medium text-gray-700 mb-2">
                     Preferred Method of Contact
                   </label>
@@ -300,7 +275,7 @@ const Contact = () => {
                     <option value="email">Email</option>
                     <option value="phone">Phone</option>
                   </select>
-                </div>
+                </div> */}
 
                 <div>
                   <label htmlFor="serviceType" className="block text-sm font-medium text-gray-700 mb-2">
@@ -329,7 +304,7 @@ const Contact = () => {
                   <textarea
                     id="message"
                     name="message"
-                    rows={4}
+                    rows={2}
                     value={formData.message}
                     onChange={handleInputChange}
                     placeholder="Please describe your cleaning needs, preferred schedule, or any specific requirements..."

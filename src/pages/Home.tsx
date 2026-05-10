@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Seo from '../components/Seo';
 import { Phone, CheckCircle, Building2, Home as HomeIcon, Hammer, Sparkles, Star, Shield, Clock, Users, Award } from 'lucide-react';
 
 const Home = () => {
@@ -47,12 +48,13 @@ const Home = () => {
     }
   ];
 
-  React.useEffect(() => {
-    document.title = 'City Wide Custodial – Affordable Cleaning Services for Home and Business';
-  }, []);
-
   return (
     <div>
+      <Seo
+        path="/"
+        title="City Wide Custodial | Professional Cleaning Services — Cornwall & Charlottetown PEI"
+        description="Professional cleaning services in Cornwall & Charlottetown PEI. Commercial, residential & post-construction cleaning. Fully insured. Call (902) 629-4790 for a free quote."
+      />
       {/* Hero Section */}
       <section
         className="relative text-white h-[80vh]"
@@ -112,7 +114,7 @@ const Home = () => {
       <section className="py-16 bg-gray-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-4xl font-bold text-gray-900 mb-6">
-            Island Owned & Operated for Over 35 Years
+            Islander Owned & Operated for Over 35 Years
           </h2>
         </div>
       </section>
@@ -203,8 +205,8 @@ const Home = () => {
               },
               {
                 icon: Award,
-                title: 'Island Owned',
-                description: 'Local business serving PEI communities for over 20 years'
+                title: 'Islander Owned',
+                description: 'Local business serving PEI communities for over 35 years'
               }
             ].map((item, index) => (
               <div key={index} className="text-center">

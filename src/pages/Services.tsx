@@ -1,6 +1,6 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Seo from '../components/Seo';
 import { Building2, Home as HomeIcon, Droplets, SprayCan,MonitorCheck,Hammer, Sparkles, Drum as Vacuum, PaintBucket, Recycle, Shield, CheckCircle } from 'lucide-react';
 
 const Services = () => {
@@ -44,7 +44,7 @@ const Services = () => {
     {
       icon: PaintBucket,
       title: 'Restoration & Property Cleanup',
-      description: 'Specialized cleaning and restoration after fire, flood, or damage. Includes disposal, disinfection, and deep cleaning.'
+      description: 'Specialized cleaning, restoration, and deep cleaning.'
     },
     {
       icon: Recycle,
@@ -69,6 +69,11 @@ const Services = () => {
 
   return (
     <div>
+      <Seo
+        path="/services"
+        title="Cleaning & Janitorial Services | City Wide Custodial — PEI"
+        description="Floor strip & wax, janitorial, carpet cleaning, pressure washing, post-construction cleanup, and more. Serving Cornwall, Charlottetown & PEI for 35+ years. Call (902) 629-4790."
+      />
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-orange-600 to-orange-800 text-white py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -76,13 +81,13 @@ const Services = () => {
             Professional Floor Care & Janitorial Services Across PEI
           </h1>
           <p className="text-xl text-orange-600 leading-relaxed mb-19">
-            Island owned and operated, serving Cornwall and surrounding communities for over 20 years
+            Islander owned and operated, serving Charlottetown, Montague,and surrounding communities for over 35 years
           </p>
 
 
           <p className="text-lg text-gray-600 leading-relaxed mb-19">
               City Wide Custodial is a trusted provider of janitorial, floor care, and custodial services 
-              for residential, commercial, industrial, and governmental clients in Cornwall and the 
+              for residential, commercial, industrial, and governmental clients in Charlottetown, Montague and the 
               surrounding communities of Prince Edward Island.
             </p>
         </div>
@@ -94,8 +99,8 @@ const Services = () => {
           <div className="text-center mb-12">
            
             <p className="text-2xl text-gray-600 leading-relaxed mb-19">
-    Island owned and operated, City Wide Custodial has proudly served Cornwall and surrounding
-    communities for over 20 years. We offer a wide range of high-quality cleaning, janitorial,
+    Islander owned and operated, City Wide Custodial has proudly served Cornwall and surrounding
+    communities for over 35 years. We offer a wide range of high-quality cleaning, janitorial,
     and maintenance services for residential, commercial, industrial, and government clients.
     Fully bonded and insured, we're committed to delivering dependable service and spotless results.
 </p>
