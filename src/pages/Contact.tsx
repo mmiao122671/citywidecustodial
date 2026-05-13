@@ -40,7 +40,7 @@ const Contact = () => {
         _replyto: formData.email
       };
 
-      const response = await fetch('https://formsubmit.co/ajax/mmiaopei@gmail.com', {
+      const response = await fetch('https://formsubmit.co/ajax/citywidecustodial@eastlink.ca', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
