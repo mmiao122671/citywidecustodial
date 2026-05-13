@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.citywidecustodial.com/sitemap.xml
+Sitemap: https://citywidecustodial.com/sitemap.xml
