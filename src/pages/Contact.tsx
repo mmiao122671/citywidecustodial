@@ -3,6 +3,8 @@ import { useLocation } from 'react-router-dom';
 import { Phone, Mail, MapPin, Clock, MessageSquare, Send } from 'lucide-react';
 import Seo from '../components/Seo';
 
+const DEFAULT_WEB3FORMS_ACCESS_KEY = '1cc28040-874c-4800-9291-ed029b529acc';
+
 const Contact = () => {
   const [formData, setFormData] = useState({
     fullName: '',
@@ -27,20 +29,35 @@ const Contact = () => {
     setIsSubmitting(true);
 
     try {
-      const payload = {
+      const WEB3FORMS_SUBMIT =
+        'https' + String.fromCharCode(47, 47) + 'api.web3forms.com/submit';
+      const accessKey =
+        import.meta.env.VITE_WEB3FORMS_ACCESS_KEY?.trim() || DEFAULT_WEB3FORMS_ACCESS_KEY;
+
+      const serviceLine = formData.serviceType
+        ? `Type of cleaning: ${formData.serviceType.replace(/-/g, ' ')}`
+        : '';
+
+      const messageBody = [serviceLine, formData.message].filter(Boolean).join('\n\n').trim();
+
+      const payload: { [key: string]: string } = {
+        access_key: accessKey,
+        subject: `New contact request from ${formData.fullName || 'Website visitor'}`,
+        from_name: 'City Wide Custodial - website',
         name: formData.fullName,
         email: formData.email,
         phone: formData.phone,
-        contactMethod: formData.contactMethod,
-        serviceType: formData.serviceType,
-        message: formData.message,
-        _subject: `New Contact Request from ${formData.fullName || 'Website Visitor'}`,
-        _template: 'table',
-        _captcha: 'false',
-        _replyto: formData.email
+        message: messageBody || '(No message provided)',
+        replyto: formData.email
       };
 
-      const response = await fetch('https://formsubmit.co/ajax/citywidecustodial@eastlink.ca', {
+      const cc = import.meta.env.VITE_WEB3FORMS_CC_EMAIL?.trim();
+      if (cc) {
+        // Web3Forms Pro: https://docs.web3forms.com/getting-started/pro-features/add-cc-email
+        payload.ccemail = cc;
+      }
+
+      const response = await fetch(WEB3FORMS_SUBMIT, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -50,18 +67,14 @@ const Contact = () => {
       });
 
       const rawResult = await response.text();
-      let result: { success?: boolean | string; message?: string } = {};
+      let result: { success?: boolean; message?: string } = {};
       try {
         result = rawResult ? JSON.parse(rawResult) : {};
       } catch {
         result = { message: rawResult };
       }
 
-      const hasExplicitFailure = result.success === false || result.success === 'false';
-
-      // FormSubmit can return HTML even when delivery succeeds.
-      // If HTTP status is OK and there is no explicit failure flag, treat as success.
-      if (!response.ok || hasExplicitFailure) {
+      if (!result.success) {
         throw new Error(result.message || 'Failed to send message');
       }
 
@@ -75,7 +88,7 @@ const Contact = () => {
         message: ''
       });
     } catch (error) {
-      console.error('FormSubmit error:', error);
+      console.error('Web3Forms error:', error);
       const message = error instanceof Error ? error.message : 'Unknown error';
       alert(`Sorry, there was an error sending your message. ${message}`);
     } finally {
@@ -149,8 +162,8 @@ const Contact = () => {
                   <Mail className="h-6 w-6 text-orange-600 mt-1" />
                   <div>
                     <h3 className="font-semibold text-gray-900 mb-1">Email</h3>
-                    <a href="mailto:citywidecustodial@gmail.com" className="text-orange-600 hover:text-orange-700 text-lg">
-                    info@citywidecustodial.com
+                    <a href="mailto:info@citywidecustodial.com" className="text-orange-600 hover:text-orange-700 text-lg">
+                      info@citywidecustodial.com
                     </a>
                   </div>
                 </div>
@@ -171,7 +184,7 @@ const Contact = () => {
                   <Clock className="h-6 w-6 text-orange-600 mt-1" />
                   <div>
                     <h3 className="font-semibold text-gray-900 mb-1">Response Time</h3>
-                    <p className="text-gray-600">We aim to respond within 2 business day</p>
+                    <p className="text-gray-600">We aim to respond within 2 business days</p>
                   </div>
                 </div>
               </div>
