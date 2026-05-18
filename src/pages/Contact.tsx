@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import { Phone, Mail, MapPin, Clock, MessageSquare, Send } from 'lucide-react';
+import { Phone, Mail, MapPin, Clock, MessageSquare, Send, CheckCircle2 } from 'lucide-react';
 import Seo from '../components/Seo';
 
-const DEFAULT_WEB3FORMS_ACCESS_KEY = '1cc28040-874c-4800-9291-ed029b529acc';
+const WEB3FORMS_ACCESS_KEY =
+  import.meta.env.VITE_WEB3FORMS_ACCESS_KEY?.trim() ||
+  '1cc28040-874c-4800-9291-ed029b529acc';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
-    fullName: '',
+    name: '',
     email: '',
     phone: '',
     contactMethod: 'email',
@@ -15,6 +17,9 @@ const Contact = () => {
     message: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'success' | 'error' | null>(null);
+  const [submitMessage, setSubmitMessage] = useState('');
+  const [submittedName, setSubmittedName] = useState('');
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -24,63 +29,50 @@ const Contact = () => {
     }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setSubmitStatus(null);
+    setSubmitMessage('');
+    setSubmittedName('');
 
     try {
-      const WEB3FORMS_SUBMIT =
-        'https' + String.fromCharCode(47, 47) + 'api.web3forms.com/submit';
-      const accessKey =
-        import.meta.env.VITE_WEB3FORMS_ACCESS_KEY?.trim() || DEFAULT_WEB3FORMS_ACCESS_KEY;
+      const formPayload = new FormData(e.currentTarget);
+      formPayload.set('access_key', WEB3FORMS_ACCESS_KEY);
+      formPayload.set(
+        'subject',
+        `New contact request from ${formData.name || 'Website visitor'}`
+      );
+      formPayload.set('from_name', 'City Wide Custodial - website');
+      formPayload.set('replyto', formData.email);
 
       const serviceLine = formData.serviceType
         ? `Type of cleaning: ${formData.serviceType.replace(/-/g, ' ')}`
         : '';
-
       const messageBody = [serviceLine, formData.message].filter(Boolean).join('\n\n').trim();
-
-      const payload: { [key: string]: string } = {
-        access_key: accessKey,
-        subject: `New contact request from ${formData.fullName || 'Website visitor'}`,
-        from_name: 'City Wide Custodial - website',
-        name: formData.fullName,
-        email: formData.email,
-        phone: formData.phone,
-        message: messageBody || '(No message provided)',
-        replyto: formData.email
-      };
+      formPayload.set('message', messageBody || '(No message provided)');
 
       const cc = import.meta.env.VITE_WEB3FORMS_CC_EMAIL?.trim();
       if (cc) {
-        // Web3Forms Pro: https://docs.web3forms.com/getting-started/pro-features/add-cc-email
-        payload.ccemail = cc;
+        formPayload.set('ccemail', cc);
       }
 
-      const response = await fetch(WEB3FORMS_SUBMIT, {
+      const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json'
-        },
-        body: JSON.stringify(payload)
+        body: formPayload
       });
 
-      const rawResult = await response.text();
-      let result: { success?: boolean; message?: string } = {};
-      try {
-        result = rawResult ? JSON.parse(rawResult) : {};
-      } catch {
-        result = { message: rawResult };
-      }
+      const result = (await response.json()) as { success?: boolean; message?: string };
 
-      if (!result.success) {
+      if (!response.ok || !result.success) {
         throw new Error(result.message || 'Failed to send message');
       }
 
-      alert('Thank you for your inquiry! We will get back to you within 48 hours.');
+      setSubmittedName(formData.name.trim());
+      setSubmitStatus('success');
+      setSubmitMessage('');
       setFormData({
-        fullName: '',
+        name: '',
         email: '',
         phone: '',
         contactMethod: 'email',
@@ -89,8 +81,12 @@ const Contact = () => {
       });
     } catch (error) {
       console.error('Web3Forms error:', error);
-      const message = error instanceof Error ? error.message : 'Unknown error';
-      alert(`Sorry, there was an error sending your message. ${message}`);
+      setSubmitStatus('error');
+      setSubmitMessage(
+        error instanceof Error
+          ? error.message
+          : 'Something went wrong. Please try again or call (902) 629-4790.'
+      );
     } finally {
       setIsSubmitting(false);
     }
@@ -106,6 +102,15 @@ const Contact = () => {
       }
     }
   }, [location]);
+
+  useEffect(() => {
+    if (submitStatus === 'success') {
+      document.getElementById('form-submit-status')?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'nearest'
+      });
+    }
+  }, [submitStatus]);
 
   return (
     <div>
@@ -228,17 +233,55 @@ const Contact = () => {
             <div id="send-request">
               <h2 className="text-3xl font-bold text-gray-900 mb-8">Request a Quote</h2>
               
+              {submitStatus === 'success' ? (
+                <div
+                  id="form-submit-status"
+                  role="status"
+                  className="rounded-xl border border-green-200 bg-green-50 p-8 text-center shadow-sm"
+                >
+                  <CheckCircle2 className="mx-auto h-14 w-14 text-green-600 mb-4" aria-hidden />
+                  <h3 className="text-2xl font-bold text-green-900 mb-2">
+                    {submittedName ? `Thank you, ${submittedName}!` : 'Thank you!'}
+                  </h3>
+                  <p className="text-green-800 leading-relaxed mb-2">
+                    Your request has been sent successfully.
+                  </p>
+                  <p className="text-green-700 leading-relaxed">
+                    A member of our team will contact you within{' '}
+                    <strong>3 business days</strong>. We appreciate you choosing City Wide Custodial.
+                  </p>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setSubmitStatus(null);
+                      setSubmittedName('');
+                    }}
+                    className="mt-6 text-sm font-semibold text-green-700 underline underline-offset-2 hover:text-green-900"
+                  >
+                    Send another request
+                  </button>
+                </div>
+              ) : (
               <form onSubmit={handleSubmit} className="space-y-6">
+                <input
+                  type="checkbox"
+                  name="botcheck"
+                  className="hidden"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  aria-hidden
+                />
+
                 <div>
-                  <label htmlFor="fullName" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
                     Full Name *
                   </label>
                   <input
                     type="text"
-                    id="fullName"
-                    name="fullName"
+                    id="name"
+                    name="name"
                     required
-                    value={formData.fullName}
+                    value={formData.name}
                     onChange={handleInputChange}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
                   />
@@ -328,15 +371,26 @@ const Contact = () => {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-green-600 text-white px-6 py-3 rounded-lg font-semibold text-lg hover:bg-green-700 transition-colors flex items-center justify-center space-x-2"
+                  className="w-full bg-green-600 text-white px-6 py-3 rounded-lg font-semibold text-lg hover:bg-green-700 transition-colors flex items-center justify-center space-x-2 disabled:opacity-60 disabled:cursor-not-allowed"
                 >
                   <Send className="h-5 w-5" />
                   <span>{isSubmitting ? 'Sending...' : 'Send Request'}</span>
                 </button>
+
+                {submitStatus === 'error' && (
+                  <p
+                    id="form-submit-status"
+                    role="alert"
+                    className="text-sm text-center rounded-lg px-4 py-3 bg-red-50 text-red-800 border border-red-200"
+                  >
+                    {submitMessage}
+                  </p>
+                )}
               </form>
+              )}
 
               <p className="text-sm text-gray-600 mt-4 text-center">
-                We aim to respond within 1 business day. Thank you for considering City Wide Custodial!
+                We aim to respond within 3 business days. Thank you for considering City Wide Custodial!
               </p>
             </div>
           </div>
